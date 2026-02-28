@@ -87,7 +87,7 @@ func main() {
 			mcp.Description("The keyword or phrase to search for."),
 		),
 		mcp.WithNumber("count",
-			mcp.Description("Number of results to return. Defaults to 5."),
+			mcp.Description("Number of results to return. Defaults to 20."),
 		),
 	)
 
@@ -101,8 +101,8 @@ func main() {
 			return mcp.NewToolResultError(err.Error()), nil
 		}
 
-		// Use requested count or default to 5
-		count := request.GetInt("count", 5)
+		// Use requested count
+		count := request.GetInt("count", 20)
 
 		searcher, err := zim.NewSearcher(archive)
 		if err != nil {
